@@ -20,16 +20,19 @@ def match(arg):
     vertigo_chars = set(HOME_ROW)
     all_chars = hash_chars | vertigo_chars
 
-    init = arg[:-1]
-    last = arg[-1]
-    if any(char not in all_chars for char in init):
+    # init = arg[:-1]
+    # last = arg[-1]
+    if any(char not in all_chars for char in arg):
         return False
-    if last != '_':
-        return False
+    # if last != '_':
+    #     return False
     return True
 
 def fix(commithash):
-    result = commithash.translate(str.maketrans(HOME_ROW, '1234567890'))[:-1]
+    if commithash == 'HEAD':
+        print(' - HEAD (ignored)')
+        return 'HEAD'
+    result = commithash.translate(str.maketrans(HOME_ROW, '1234567890'))
     print(' -', commithash, '->', result)
     return result
 
