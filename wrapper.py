@@ -20,12 +20,8 @@ def match(arg):
     vertigo_chars = set(HOME_ROW)
     all_chars = hash_chars | vertigo_chars
 
-    # init = arg[:-1]
-    # last = arg[-1]
     if any(char not in all_chars for char in arg):
         return False
-    # if last != '_':
-    #     return False
     return True
 
 def fix(commithash):
